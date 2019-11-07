@@ -1,20 +1,22 @@
 <?php
 
-    $dados['title_do_header'] = 'Sobre';
-    $this->load->view('include/header', $dados);
+$dados['title_do_header'] = 'Sobre';
+$this->load->view('include/header', $dados);
 
 ?>
 
-<div>
-    <?php
-    echo $titulo;
-    echo '<br>';
-    echo $conteudo;
-    ?>
+<div class="disposicao">
+    <div class="fundo_info">
+        <?php
+        echo '<h1>'.$titulo.'</h1>';
+        echo '<br>';
+        echo '<h6>'.$conteudo.'</h6>';
+        ?>
+    </div>
 </div>
 
 <?php
 
-    $this->load->view('include/footer');
+$this->load->view('include/footer');
 
 ?>

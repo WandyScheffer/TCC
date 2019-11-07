@@ -8,7 +8,7 @@ class Catalogo_model extends CI_Model{
     }
     //retorna livros para a tabela, em ordem alfabética
     public function retornoLivroAlfa($limit, $offset){
-         $sql = 'select 
+         $sql = 'select li.id_livro,
                 li.nm_titulo, 
                 array(
                 	select a.nm_autor from "ALUNO4M21".mltb_autor a, "ALUNO4M21".mltb_livro_autor la 
@@ -79,7 +79,7 @@ class Catalogo_model extends CI_Model{
     {//faz seleção like pelo titulo
         if ($tipo == 1) {
             $string = "'%" . $string . "%'";
-            $sql = "select 
+            $sql = "select li.id_livro,
                 li.nm_titulo, 
                 array(
                 	select a.nm_autor from " . '"ALUNO4M21"' . ".mltb_autor a, " . '"ALUNO4M21"' . ".mltb_livro_autor la 
@@ -104,7 +104,7 @@ class Catalogo_model extends CI_Model{
         }else if ($tipo == 2){
             $string = "'%" . $string . "%'";
 
-            $sql = "select 
+            $sql = "select li.id_livro,
                 li.nm_titulo, 
                 array(
                 	select a.nm_autor from " . '"ALUNO4M21"' . ".mltb_autor a, " . '"ALUNO4M21"' . ".mltb_livro_autor la 
@@ -130,7 +130,7 @@ class Catalogo_model extends CI_Model{
 
         }else if($tipo == 3){
             $string = "'" . $string . "'";
-            $sql = "select 
+            $sql = "select li.id_livro,
                 li.nm_titulo, 
                 array(
                 	select a.nm_autor from " . '"ALUNO4M21"' . ".mltb_autor a, " . '"ALUNO4M21"' . ".mltb_livro_autor la 
@@ -157,7 +157,7 @@ class Catalogo_model extends CI_Model{
     public function filtro($array, $limit, $offset){
 
         if (isset($array['autor']) && isset($array['genero'])) {
-            $sql = 'select 
+            $sql = 'select li.id_livro,
                 li.nm_titulo, 
                 array(
                 	select a.nm_autor from "ALUNO4M21".mltb_autor a, "ALUNO4M21".mltb_livro_autor la 
@@ -189,7 +189,7 @@ class Catalogo_model extends CI_Model{
             $query = $this->db->query($sql, array($array['autor'], $array['autor'], $array['genero'], $array['genero'], $limit, $offset));
             
         } else if(isset($array['autor'])){
-            $sql = 'select 
+            $sql = 'select li.id_livro,
                 li.nm_titulo, 
                 array(
                     select a.nm_autor from "ALUNO4M21".mltb_autor a, "ALUNO4M21".mltb_livro_autor la 
@@ -216,7 +216,7 @@ class Catalogo_model extends CI_Model{
             $query = $this->db->query($sql, array($array['autor'], $array['autor'], $limit, $offset));
 
         } else if(isset($array['genero'])){
-            $sql = 'select 
+            $sql = 'select li.id_livro,
                 li.nm_titulo, 
                 array(
                     select a.nm_autor from "ALUNO4M21".mltb_autor a, "ALUNO4M21".mltb_livro_autor la 

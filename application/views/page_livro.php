@@ -8,12 +8,27 @@ $this->load->view('include/header', $dados);
 <div class="disposicao">
     <div class="fundo_locador table-responsive">
         <div class="superior_livro">
+            <?php
+            $chaves = array('{', '}');
+            // echo (str_replace($chaves, '', $value['autores']));
+            ?>
+            <span>Título: <?php echo $infoLivro['nm_titulo']; ?></span>
+            <span>Autor(es): <?php echo (str_replace($chaves, '', $infoLivro['autores'])); ?></span>
+            <span>Gênero(s): <?php echo (str_replace($chaves, '', $infoLivro['generos'])); ?></span>
+            <span>Numero de exemplares: <?php
+                                        $size = sizeof(explode(',', str_replace($chaves, '', $infoLivro['exemplares'])));
+                                        $liste = (explode(',', str_replace($chaves, '', $infoLivro['exemplares'])));
+                                        $cont_disponiveis = 0;
+                                        for ($i = 0; $i < $size; $i++) {
+                                            if ($liste[$i] != '') {
+                                                $cont_disponiveis++;
+                                            }
+                                        }
+                                        echo $cont_disponiveis;
 
-            <span>Título:</span>
-            <span>Autor(es):</span>
-            <span>Gênero(s):</span>
-            <span>Numero de exemplares:</span>
-            <span>Avaliação:</span>
+                                        ?></span>
+            <!--<span>Avaliação: <?php //echo $infoLivro['']; 
+                                ?></span>-->
 
 
         </div>

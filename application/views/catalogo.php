@@ -103,9 +103,10 @@ $this->load->view('include/header', $dados);
                 $vazio = true;
                 foreach ($tabelaLivros as $row => $value) {
                     $vazio = false;
+                    
                     ?>
                     <tr>
-                        <td><a href="<?php echo base_url('pagina_livro/1') ?>"><?php echo $value['nm_titulo'] ?></a></td>
+                        <td><a href="<?php echo base_url('pagina_livro/').$value['id_livro'] ?>"><?php echo $value['nm_titulo'] ?></a></td>
                         <td><?php echo (str_replace($chaves, '', $value['autores'])); ?></td>
                         <td><?php echo (str_replace($chaves, '', $value['generos'])); ?></td>
                         <td><?php print_r($value['cod_isbn']); ?></td>
