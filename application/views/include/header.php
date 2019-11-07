@@ -24,7 +24,7 @@
     <header>
         <nav class="navbar navbar-expand-lg flex-row" style="background-color: #91D8F7; padding:0px;">
             <a class="navbar-brand" style="padding: 0px;" href="<?php echo base_url(); ?>">
-                <img src="<?php echo base_url('assets/img/logoML.png'); ?>" width="80" height="70" alt="">
+                <img src="<?php echo base_url('assets/img/logoML2.png'); ?>" width="80" height="70" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

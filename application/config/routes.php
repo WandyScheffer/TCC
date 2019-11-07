@@ -120,5 +120,7 @@ $route['perfil'] = 'acessolocadores/pagelocador_controller';
 $route['mensagens'] = 'msgusuario_controller';
 $route['locacoes'] = 'acessofuncionarios/locacao_controller';
 
+$route['locacoes/lista'] = 'acessofuncionarios/locacao_controller/lista';
+
 $route['pagina_livro/(:num)'] = 'pagelivro_controller';
 

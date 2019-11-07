@@ -13,4 +13,8 @@ class Locacao_controller extends CI_Controller
     {
         $this->load->view('locacoes');
     }
+    public function lista()
+    {
+        echo 'até aqui chega';
+    }
 }

@@ -1512,7 +1512,7 @@ pre code {
 }
 
 .table {
-  width: 100%;
+  width: 95%;
   margin-bottom: 1rem;
   color: #212529;
 }
@@ -1865,7 +1865,7 @@ pre code {
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid #0098DA;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -10118,15 +10118,6 @@ a.text-dark:hover, a.text-dark:focus {
   border-width: 2px;
 }
 
-/* .not0{grid-area: not0;}
-.not1{grid-area: not1;}
-.not2{grid-area: not2;}
-.not3{grid-area: not3;}
-.not4{grid-area: not4;}
-.not5{grid-area: not5;}
-.not6{grid-area: not6;}
-.not7{grid-area: not7;} */
-
 .disposicao{
   background-size: cover;
   display: flex;
@@ -10134,15 +10125,173 @@ a.text-dark:hover, a.text-dark:focus {
   justify-content: center;
 }
 
+/*mensagens*/
+
 .fundo_estilo_formulario{
+  display: flex;
+  flex-direction: column;
   background-color: white;
-  min-width: 80%;
+  width: 90%;
   border-radius: 5%;
   border: solid #0098DA;
-  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .fundo_formulario{
   display: flex;
   justify-content: center;
+}
+
+/*locador*/
+
+.fundo_locador{
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 90%;
+  border-radius: 5%;
+  border: solid #0098DA;
+}
+.superior_locador{
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: center;
+  /* background-color: yellow; */
+  width: 90%;
+  height: 150px;
+  color: #0098DA;
+  font-weight: bold;
+}
+.inferior_locador{
+  display: flex;
+  justify-content: center;
+  /* background-color: blue; */
+  width: 90%;
+  /* min-height: 45%; */
+}
+.ladoA{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  /* background-color: black; */
+  width: 45%;
+  
+}
+.ladoB{
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  /* background-color: pink; */
+  width: 45%;
+  
+}
+
+
+/*pagina livro*/
+
+.superior_livro{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  /* background-color: yellow; */
+  width: 90%;
+  height: 150px;
+  color: #0098DA;
+  font-weight: bold;
+  
+}
+
+.inferior_livro{
+  display: flex;
+  justify-content: center;
+  /* background-color: blue; */
+  width: 100%;
+  /* min-height: 45%; */
+}
+
+/*locacoes*/
+
+.fundo_locacao{
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 90%;
+  border-radius: 5%;
+  border: solid #0098DA;
+  min-height: 300px;
+}
+
+.inferior_locacao{
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #0098DA;
+  padding-top: 20px;
+}
+
+/*informações*/
+
+.fundo_info{
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 90%;
+  border-radius: 5%;
+  border: solid #0098DA;
+  min-height: 300px;
+}
+.info{
+  margin-top: 2%;
+  width: 90%;
+}
+
+/*acervo*/
+
+.fundo_acervo{
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 90%;
+  border-radius: 5%;
+  border: solid #0098DA;
+  min-height: 300px;
+}
+
+.fundo_acervo fieldset{
+  width: 90%;
+  margin-top: 2%;
+}
+.fundo_acervo div{
+  width: 90%;
+  margin-top: 2%;
+}
+
+/*cadastro user*/
+
+.fundo_cad_user{
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 90%;
+  border-radius: 5%;
+  border: solid #0098DA;
+  min-height: 300px;
+  margin-bottom: 2%;
+}
+
+.fundo_cad_user form{
+  width: 90%;
 }
