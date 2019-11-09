@@ -15,6 +15,7 @@ class ManuseiaUsers_controller extends CI_Controller
     {
         $this->load->view('cadastro_usuarios');
     }
+
     public function cadastrar()
     {
         $array_insercao = array(
@@ -47,6 +48,7 @@ class ManuseiaUsers_controller extends CI_Controller
         
         
     }
+
     public function editar() // entra na tela de edicao
     {
         
@@ -60,6 +62,7 @@ class ManuseiaUsers_controller extends CI_Controller
         
         
     }
+
     public function edicao() // efetua a edição
     {
         $id_where = $this->uri->segment(2);
@@ -83,6 +86,7 @@ class ManuseiaUsers_controller extends CI_Controller
         redirect(base_url('pes_users'));
         
     }
+
     public function mudaStatus()
     {
         $id_where = $this->uri->segment(2);
@@ -100,6 +104,7 @@ class ManuseiaUsers_controller extends CI_Controller
 
         redirect(base_url('pes_users'));
     }
+    
 
     public function mostra()
     {

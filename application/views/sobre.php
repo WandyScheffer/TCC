@@ -6,7 +6,7 @@ $this->load->view('include/header', $dados);
 ?>
 
 <div class="disposicao">
-    <div class="fundo_info">
+    <div class="fundo_sobre">
         <?php
         echo '<h1>'.$titulo.'</h1>';
         echo '<br>';

@@ -7,10 +7,17 @@ class PageLocador_controller extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->model('Usuarios_model', 'um');
+        
     }
 
     public function index()
     {
-        $this->load->view('page_locador');
+        $id_user = $_SESSION['id_user'];
+
+        $dados['user'] = ($this->um->retornaUserUni($id_user))[0];
+
+        // print_r($dados['user']);
+        $this->load->view('page_locador', $dados);
     }
 }

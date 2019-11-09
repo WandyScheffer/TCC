@@ -107,6 +107,7 @@ $route['pesquisa_users/p/(:num)'] = 'acessofuncionarios/manuseiausers_controller
 
 
 $route['edit_livro'] = 'acessofuncionarios/manuseialivro_controller/edit';
+$route['edit_livro/(:num)'] = 'acessofuncionarios/manuseialivro_controller/edit';
 
 $route['edit_user/(:num)'] = 'acessofuncionarios/manuseiausers_controller/editar';
 
@@ -123,4 +124,14 @@ $route['locacoes'] = 'acessofuncionarios/locacao_controller';
 $route['locacoes/lista'] = 'acessofuncionarios/locacao_controller/lista';
 
 $route['pagina_livro/(:num)'] = 'pagelivro_controller';
+
+$route['cad_referente_livro/(:num)'] = 'acessofuncionarios/manuseialivro_controller/cadAutorGenero';
+
+$route['cadastrando_referente/(:num)'] = 'acessofuncionarios/manuseialivro_controller/cadastrandoReferente';
+
+$route['editar_livro/(:num)'] = 'acessofuncionarios/manuseialivro_controller/editando';
+
+$route['pagina_livro/(:num)/p/(:num)'] = 'pagelivro_controller';
+
+$route['pagina_livro/(:num)/p'] = 'pagelivro_controller';
 

@@ -7,6 +7,7 @@ $this->load->view('include/header', $dados);
 
 <div class="disposicao">
     <div class="fundo_locador table-responsive">
+        
         <div class="superior_livro">
             <?php
             $chaves = array('{', '}');
@@ -28,28 +29,40 @@ $this->load->view('include/header', $dados);
 
                                         ?></span>
             <!--<span>Avaliação: <?php //echo $infoLivro['']; 
-                                ?></span>-->
+                                    ?></span>-->
+
 
 
         </div>
+
+        <?php
+        if (isset($_SESSION['permissao'])) {
+
+
+            if ($_SESSION['permissao'] != 3) { ?>
+                <a id="singlebutton" name="btn_logar" class="btn btn-primary" style="color:white" href="<?php echo base_url('edit_livro/') . $infoLivro['id_livro'] ?>">Editar informações</a>
+                <br>
+        <?php }
+        } ?>
+
+
+
         <div class="inferior_livro">
             <table class="table table-bordered table-striped table-light">
-
+                <?php 
+                    foreach ($tabelaComent as $tupla) {
+                             
+                    
+                ?>
                 <tr>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fringilla cursus magna, in viverra neque euismod id. Suspendisse ornare, sapien vitae elementum blandit, orci massa feugiat dui, id tempor ex magna nec turpis. Vivamus viverra pulvinar facilisis. Morbi diam dui, faucibus in massa sed, posuere vehicula sapien. Ut a aliquet.</td>
-
+                    <th><?php print_r($tupla['nm_titulo']);?></th>
+                    <td><?php print_r($tupla['conteudo_coment']); ?></td>
                 </tr>
-                <tr>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fringilla cursus magna, in viverra neque euismod id. Suspendisse ornare, sapien vitae elementum blandit, orci massa feugiat dui, id tempor ex magna nec turpis. Vivamus viverra pulvinar facilisis. Morbi diam dui, faucibus in massa sed, posuere vehicula sapien. Ut a aliquet.</td>
 
-                </tr>
-                <tr>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fringilla cursus magna, in viverra neque euismod id. Suspendisse ornare, sapien vitae elementum blandit, orci massa feugiat dui, id tempor ex magna nec turpis. Vivamus viverra pulvinar facilisis. Morbi diam dui, faucibus in massa sed, posuere vehicula sapien. Ut a aliquet.</td>
-
-                </tr>
             </table>
         </div>
-        <div><a href="">1 - 2 - 3</a></div>
+        <div><?php
+} echo $paginacao; ?></div>
     </div>
 </div>
 

@@ -9,15 +9,15 @@ $this->load->view('include/header', $dados);
     <div class="fundo_locador table-responsive">
         <div class="superior_locador">
             <div class="ladoA">
-                <span>Nome:</span>
-                <span>CPF:</span>
-                <span>Telefone:</span>
-                <span>Email:</span>
+                <span>Nome: <?php echo $user['nm_pessoa']; ?></span>
+                <span>CPF: <?php echo $user['nu_cpf']; ?></span>
+                <span>Telefone: <?php echo $user['nu_telefone']; ?></span>
+                <span>Email: <?php echo $user['email']; ?></span>
             </div>
             <div class="ladoB">
-                <span>CEP:</span>
-                <span>Número:</span>
-                <span>Complemento:</span>
+                <span>CEP: <?php echo $user['cep']; ?></span>
+                <span>Número: <?php echo $user['nu_endereco']; ?></span>
+                <span>Complemento: <?php echo $user['complemento']; ?></span>
             </div>
         </div>
         <div class="inferior_locador">

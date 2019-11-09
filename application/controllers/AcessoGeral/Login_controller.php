@@ -35,13 +35,13 @@ class Login_controller extends CI_Controller {
 
             } else {
                 $dados['msg'] = 'Senha incorreta';
-                echo $dados['msg'];
+                // echo $dados['msg'];
                 $this->load->view('login', $dados);
             }
         
         }else {
             $dados['msg'] = 'ID de usuário não encontrado para a permissão informada';
-            echo $dados['msg'];
+            // echo $dados['msg'];
             $this->load->view('login', $dados);
         }
 

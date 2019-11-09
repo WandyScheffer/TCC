@@ -35,7 +35,14 @@ class SobreLivro_model extends CI_Model {
         return $query->result_array();
     }
     
-    
+    public function retornaComentLivro($limit = null, $offset = null, $id_livro = null)
+    {
+        $this->db->where('id_livro =', $id_livro);
+        $this->db->where('permissao =', true);
+
+        return $this->db->get('"ALUNO4M21".mltb_comentarios', $limit, $offset)->result_array();
+        
+    }
 
 }
 
