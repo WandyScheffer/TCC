@@ -54,23 +54,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'inicial_controller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
 //paginas de acesso geral
 $route['catalogo'] = 'acessogeral/catalogo_controller';
 $route['informacoes'] = 'acessogeral/informacoes_controller';
 $route['login'] = 'acessogeral/login_controller';
 $route['sobre'] = 'acessogeral/sobre_controller';
 $route['logar']= 'acessogeral/login_controller/logar';
-/* paginas de acesso geral que necessitam de paginação*/
+
+//infos
 $route['informacoes/p'] = 'acessogeral/informacoes_controller';
 $route['informacoes/p/(:num)'] = 'acessogeral/informacoes_controller';
 
+//referentes ao catalogo
 $route['catalogo/p'] = 'acessogeral/catalogo_controller';
 $route['catalogo/p/(:num)'] = 'acessogeral/catalogo_controller';
 
 //paginas quando logado
 $route['deslogar'] = 'acessogeral/login_controller/deslogar';
+
 //cadastro de livros
 $route['cad_livro'] = 'acessofuncionarios/manuseialivro_controller';
+$route['cadastrar_livro'] = 'acessofuncionarios/manuseialivro_controller/cadastrandolivro';
+
+//cadastros extras do livro
+$route['cad_referente_livro/(:num)'] = 'acessofuncionarios/manuseialivro_controller/cadAutorGenero';
+$route['cadastrando_referente/(:num)'] = 'acessofuncionarios/manuseialivro_controller/cadastrandoReferente';
+
+//edit livros
+// $route['edit_livro'] = 'acessofuncionarios/manuseialivro_controller/edit';//acho q essa vai sair fora-----------------
+$route['edit_livro/(:num)'] = 'acessofuncionarios/manuseialivro_controller/edit';
+$route['editar_livro/(:num)'] = 'acessofuncionarios/manuseialivro_controller/editando';
+
+
 //sobre conteudos
 $route['cad_conteudos'] = 'acessofuncionarios/cadconteudo_controller';
 $route['multa'] = 'acessofuncionarios/cadconteudo_controller/atualizamulta';
@@ -79,7 +95,6 @@ $route['cad_info'] = 'acessofuncionarios/cadconteudo_controller/cadastranoticia'
 
 
 //catalogo pesquisa like
-
 $route['pesquisa'] = 'acessogeral/catalogo_controller/pesquisaLike';
 
 $route['pesquisa/p'] = 'acessogeral/catalogo_controller/pesquisaLike';
@@ -93,7 +108,6 @@ $route['filtro/p/(:num)'] = 'acessogeral/catalogo_controller/filtro';
 
 //cad users
 $route['cad_users'] = 'acessofuncionarios/manuseiausers_controller';
-
 $route['cadastrar'] = 'acessofuncionarios/manuseiausers_controller/cadastrar';
 
 //pesquisa de usuários
@@ -105,33 +119,26 @@ $route['pesquisa_users'] = 'acessofuncionarios/manuseiausers_controller/pesquisa
 $route['pesquisa_users/p'] = 'acessofuncionarios/manuseiausers_controller/pesquisauser';
 $route['pesquisa_users/p/(:num)'] = 'acessofuncionarios/manuseiausers_controller/pesquisauser';
 
-
-$route['edit_livro'] = 'acessofuncionarios/manuseialivro_controller/edit';
-$route['edit_livro/(:num)'] = 'acessofuncionarios/manuseialivro_controller/edit';
-
+//edit users
 $route['edit_user/(:num)'] = 'acessofuncionarios/manuseiausers_controller/editar';
-
 $route['edicao_user/(:num)'] = 'acessofuncionarios/manuseiausers_controller/edicao';
-
 $route['edit_status/(:num)/(:num)'] = 'acessofuncionarios/manuseiausers_controller/mudastatus';
 
-$route['cadastrar_livro'] = 'acessofuncionarios/manuseialivro_controller/cadastrandolivro';
-
-$route['perfil'] = 'acessolocadores/pagelocador_controller';
-$route['mensagens'] = 'msgusuario_controller';
-$route['locacoes'] = 'acessofuncionarios/locacao_controller';
-
-$route['locacoes/lista'] = 'acessofuncionarios/locacao_controller/lista';
-
+//pagina do livro
 $route['pagina_livro/(:num)'] = 'pagelivro_controller';
-
-$route['cad_referente_livro/(:num)'] = 'acessofuncionarios/manuseialivro_controller/cadAutorGenero';
-
-$route['cadastrando_referente/(:num)'] = 'acessofuncionarios/manuseialivro_controller/cadastrandoReferente';
-
-$route['editar_livro/(:num)'] = 'acessofuncionarios/manuseialivro_controller/editando';
-
 $route['pagina_livro/(:num)/p/(:num)'] = 'pagelivro_controller';
-
 $route['pagina_livro/(:num)/p'] = 'pagelivro_controller';
 
+//locacoes
+$route['locacoes'] = 'acessofuncionarios/locacao_controller';
+$route['locacoes/lista'] = 'acessofuncionarios/locacao_controller/lista';
+$route['locacoes/lista/p'] = 'acessofuncionarios/locacao_controller/lista';
+$route['locacoes/lista/p/(:num)'] = 'acessofuncionarios/locacao_controller/lista';
+$route['locando'] = 'acessofuncionarios/locacao_controller/locando';
+$route['manuseia_locacao'] = 'acessofuncionarios/locacao_controller/manuseialocacao';
+
+//mensagem
+$route['mensagens'] = 'msgusuario_controller';
+
+//perfil
+$route['perfil'] = 'acessolocadores/pagelocador_controller';

@@ -7,7 +7,7 @@ $this->load->view('include/header', $dados);
 
 <div class="disposicao">
     <div class="fundo_locador table-responsive">
-        
+
         <div class="superior_livro">
             <?php
             $chaves = array('{', '}');
@@ -49,20 +49,16 @@ $this->load->view('include/header', $dados);
 
         <div class="inferior_livro">
             <table class="table table-bordered table-striped table-light">
-                <?php 
-                    foreach ($tabelaComent as $tupla) {
-                             
-                    
-                ?>
-                <tr>
-                    <th><?php print_r($tupla['nm_titulo']);?></th>
-                    <td><?php print_r($tupla['conteudo_coment']); ?></td>
-                </tr>
-
+                <?php
+                foreach ($tabelaComent as $tupla) { ?>
+                    <tr>
+                        <th><?php print_r($tupla['nm_titulo']); ?></th>
+                        <td><?php print_r($tupla['conteudo_coment']); ?></td>
+                    </tr>
+                <?php } ?>
             </table>
         </div>
-        <div><?php
-} echo $paginacao; ?></div>
+        <div><?php echo $paginacao; ?></div>
     </div>
 </div>
 

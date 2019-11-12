@@ -21,7 +21,7 @@ $this->load->view('include/header', $dados);
     
             <!-- Form Name -->
             <?php if (!isset($id_pessoa)) { ?>
-                <legend>Cadastro</legend>
+                <legend>Cadastro de Usuários</legend>
     
                 <!-- Multiple Radios (inline) -->
     
@@ -48,7 +48,7 @@ $this->load->view('include/header', $dados);
                 setcookie('id_user', $id_pessoa);
                 ?>
     
-                <legend>Editar Usuário</legend>
+                <legend>Edição de Usuário</legend>
     
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="id_user">Código do usuário:</label>

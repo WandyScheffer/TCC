@@ -22,7 +22,7 @@ $this->load->view('include/header', $dados);
             <fieldset>
 
                 <!-- Form Name -->
-                <legend></legend>
+                <legend>Cadastro de Livro</legend>
 
                 <!-- Text input-->
                 <div class="form-group">

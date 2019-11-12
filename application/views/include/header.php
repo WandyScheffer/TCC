@@ -55,7 +55,7 @@
                                         case 2: //biblio
                                             ?>
                                         <a class="dropdown-item" href="<?php echo base_url('cad_livro'); ?>">Cadastrar livro</a>
-                                        <a class="dropdown-item" href="<?php echo base_url('edit_livro'); ?>">Editar livro</a>
+                                        
                                         <a class="dropdown-item" href="<?php echo base_url('cad_users'); ?>">Cadastrar usuário</a>
                                         <a class="dropdown-item" href="<?php echo base_url('pes_users'); ?>">Pesquisar / editar usuário</a>
                                         <a class="dropdown-item" href="<?php echo base_url('locacoes'); ?>">Locações</a>
