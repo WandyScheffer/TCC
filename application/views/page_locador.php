@@ -2,7 +2,19 @@
 
 $dados['title_do_header'] = 'Perfil';
 $this->load->view('include/header', $dados);
+// date_default_timezone_set('America/Sao_Paulo');
 
+// $atual = new DateTime();
+
+// // print_r($atual->format('d/m/Y'));
+
+// $a = ($atual->format('d/m/Y'));
+
+// // print_r(strtotime(($tabelaLocacoesUser[0]['dt_locacao'])) - strtotime($a)  );
+
+// $teste = (strtotime(($tabelaLocacoesUser[0]['dt_locacao'])) - strtotime($a));
+
+// print_r(times);
 ?>
 
 <div class="disposicao">
@@ -25,14 +37,38 @@ $this->load->view('include/header', $dados);
                 <tr>
                     <th>ID exemplar</th>
                     <th>Titulo</th>
-                    <!--array-->
+                    <th>Data entrega prevista</th>
                     <th>Data entrega</th>
-                    <!--array-->
+                    <th>Valor pago</th>
                     <th>Multa</th>
                     <th>Ação</th>
-                    <!--contar o que tem dentro da array -->
                 </tr>
-                <tr>
+                <?php foreach ($tabelaLocacoesUser as $linha) { ?>
+                    <tr>
+                        <td><?php print_r($linha['id_exemplar']) ?></td>
+                        <td><?php print_r($linha['titulo']) ?></td>
+                        <td><?php print_r($linha['dt_devolucao_prevista']) ?></td>
+                        <td><?php print_r($linha['dt_devolucao']) ?></td>
+                        <td><?php print_r($linha['vl_pago']) ?></td>
+                        <td><?php if ($linha['multa'] < 0) {
+                                    print_r('0');
+                                } else {
+                                    print_r($linha['multa']);
+                                } ?></td>
+                        <td><?php if ($linha['multa'] == 0 && $linha['dt_devolucao'] == '') { ?>
+
+                                <a href="<?php echo base_url('renovar/').$linha['id_locacao'] ?>" class="btn btn-outline-danger">Renovar</a>
+
+                            <?php } elseif ($linha['dt_devolucao'] != '') { ?>
+
+                                <a href="<?php echo base_url('mensagens') ?>" class="btn btn-outline-primary">Comentar</a>
+
+                            <?php } ?></td>
+                        <!-- <td><?php //print_r($linha['']) 
+                                        ?></td> -->
+                    </tr>
+                <?php } ?>
+                <!-- <tr>
                     <td>11</td>
                     <td>LIVROD1</td>
                     <td>2019-10-01</td>
@@ -66,10 +102,10 @@ $this->load->view('include/header', $dados);
                     <td>2019-05-28</td>
                     <td>0,75</td>
                     <td><a href="" class="btn btn-outline-info">Ver comentário</a></td>
-                </tr>
+                </tr> -->
             </table>
         </div>
-        <div><a href="">1 - 2 - 3</a></div>
+        <div><?php echo $paginacao ?></div>
     </div>
 </div>
 

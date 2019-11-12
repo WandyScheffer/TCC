@@ -139,6 +139,12 @@ $route['manuseia_locacao'] = 'acessofuncionarios/locacao_controller/manuseialoca
 
 //mensagem
 $route['mensagens'] = 'msgusuario_controller';
+$route['enviando'] = 'msgusuario_controller/enviando';
+$route['lido/(:num)'] = 'msgusuario_controller/lendo';
+$route['analisa/(:num)/(:num)'] = 'msgusuario_controller/analisaComent';
 
 //perfil
 $route['perfil'] = 'acessolocadores/pagelocador_controller';
+$route['perfil/p'] = 'acessolocadores/pagelocador_controller';
+$route['perfil/p/(:num)'] = 'acessolocadores/pagelocador_controller';
+$route['renovar/(:num)'] = 'acessolocadores/pagelocador_controller/renovando';

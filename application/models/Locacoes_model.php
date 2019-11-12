@@ -97,11 +97,18 @@ class Locacoes_model extends CI_Model {
 
     public function renovamento($id_user = null)
     {
-        $sql = 'update "ALUNO4M21".mltb_locacao set dt_devolucao_prevista = (date '."'now()'".' + integer '."'7'".') where id_locador = 6 and dt_devolucao is null';
+        $sql = 'update "ALUNO4M21".mltb_locacao set dt_devolucao_prevista = (date '."'now()'".' + integer '."'7'".') where id_locador = ? and dt_devolucao is null';
         $query = $this->db->query($sql, array($id_user));
     }
 
-    public function listaLocacoes($limit, $offset)
+    public function renovamentoIdLocacao($id_locacao = null)
+    {
+        $sql = 'update "ALUNO4M21".mltb_locacao set dt_devolucao_prevista = (date ' . "'now()'" . ' + integer ' . "'7'" . ') where id_locacao = ? and dt_devolucao is null';
+        $query = $this->db->query($sql, array($id_locacao));
+        
+    }
+
+    public function listaLocacoes($limit = null, $offset = null)
     {
         $sql = 'select pe.id_pessoa, pe.nm_pessoa as locador, 
                 li.nm_titulo as titulo, lo.id_exemplar, lo.vl_pago,
@@ -125,6 +132,27 @@ class Locacoes_model extends CI_Model {
         $query = $this->db->query($sql, array($limit, $offset))->result_array();
         return $query;
 
+    }
+
+    public function locacoesUsuario($id_user = null, $limit = null, $offset = null)
+    {
+        $sql = 'select lo.id_locacao, li.nm_titulo as titulo, lo.id_exemplar, lo.vl_pago,
+                cast (to_char((now() - lo.dt_devolucao_prevista),'."'dd'".') as integer)*(select vl_multa 
+                																	from "ALUNO4M21".mltb_valormulta 
+                																	order by id_valor desc limit 1) as multa,
+                to_char (lo.dt_locacao, '."'dd/mm/yyyy'".') as dt_locacao,
+                to_char (lo.dt_devolucao_prevista, '."'dd/mm/yyyy'".') as dt_devolucao_prevista,
+                to_char (lo.dt_devolucao, '."'dd/mm/yyyy'". ') as dt_devolucao
+                from "ALUNO4M21".mltb_locacao as lo,
+                "ALUNO4M21".mltb_livro as li,
+                "ALUNO4M21".mltb_exemplar_livro as e
+                where lo.id_exemplar = e.id_exemplar and
+                e.id_livro = li.id_livro and
+                lo.id_locador = ?
+                order by lo.id_locacao desc
+                limit ? offset ?';
+
+        return $query = $this->db->query($sql, array($id_user, $limit, $offset))->result_array();
     }
 
 }
