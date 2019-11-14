@@ -5,7 +5,7 @@ $this->load->view('include/header', $dados);
 
 ?>
 <div class="disposicao">
-    <div class="fundo_locacao ">
+    <div class="fundo_locacao " style="margin-bottom: 5%;">
         <div style="width: 90%;">
             <div style="border-bottom:1px solid #0098DA; display:flex; justify-content: center; margin-bottom: 5%;">
                 <a href="<?php echo base_url('locacoes');  ?>" id="bt_renovar" name="bt_renovar" class="" style="color:lightgreen; font-weight: bold; padding-right: 80px; padding-bottom: 20px; padding-top: 20px;">Manipular Locação</a>

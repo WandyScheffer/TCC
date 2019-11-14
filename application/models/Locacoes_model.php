@@ -117,7 +117,7 @@ class Locacoes_model extends CI_Model {
                 																	order by id_valor desc limit 1) as multa,
                 to_char (lo.dt_locacao, '."'dd/mm/yyyy'".') as dt_locacao,
                 to_char (lo.dt_devolucao_prevista, '."'dd/mm/yyyy'".') as dt_devolucao_prevista,
-                to_char (lo.dt_devolucao, '."'dd/mm/yyyy'".') as dt_devolucao,
+                to_char (lo.dt_devolucao, '."'dd/mm/yyyy'". ') as dt_devolucao,
                 pb.nm_pessoa as biblio_locar
                 from "ALUNO4M21".mltb_locacao as lo,
                 "ALUNO4M21".mltb_pessoa as pe,
@@ -128,6 +128,7 @@ class Locacoes_model extends CI_Model {
                 lo.id_exemplar = e.id_exemplar and
                 e.id_livro = li.id_livro and
                 lo.id_bibliotecario = pb.id_pessoa
+                order by lo.dt_devolucao_prevista desc
                 limit ? offset ?';
         $query = $this->db->query($sql, array($limit, $offset))->result_array();
         return $query;

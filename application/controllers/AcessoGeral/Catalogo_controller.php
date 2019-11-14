@@ -16,11 +16,32 @@ class Catalogo_controller extends CI_Controller {
 
         $config = array(
             "base_url" => base_url('catalogo/p'),
-            "per_page" => 3, //limit
+            "per_page" => 8, //limit
             "num_links" => 3,
             "uri_segment" => 3, //offset
-            "total_rows" => $this->cm->nuLinhas(1)
+            "total_rows" => $this->cm->nuLinhas(1),
+            "full_tag_open" => "<ul class = 'pagination'>",
+            "full_tag_close" => "</ul>",
+            "first_link" => false,
+            "last_link" => false,
+            "first_tag_open" => "<li>",
+            "first_tag_close" => "</li>",
+            "prev_link" => "Anterior",
+            "prev_tag_open" => "<li class = 'prev page-link'>",
+            "prev_tag_close" => "<li>",
+            "next_link" => "Próximo",
+            "next_tag_open" => "<li class = 'next page-link'>",
+            "next_tag_close" => "<li>",
+            "last_tag_open" => "<li>",
+            "last_tag_close" => "</li>",
+            "cur_tag_open" => "<li class = 'active page-item'><span class = 'page-link'>",
+            "cur_tag_close" => "<span class='sr-only'>(current)</span></span></li>",
+            "num_tag_open" => "<li class = 'page-link'>",
+            "num_tag_close" => "</li>"
+            
         );
+        
+
         $this->pagination->initialize($config);
         $dados['paginacao'] = $this->pagination->create_links();
         $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -42,10 +63,10 @@ class Catalogo_controller extends CI_Controller {
         
         if (isset($_POST['caixaPesquisa']) && $_POST['caixaPesquisa']!='') {
             
-            setcookie('caixaPesquisa', $_POST['caixaPesquisa']);
+            setcookie('caixaPesquisa', strtoupper($_POST['caixaPesquisa']));
             setcookie('tipo', $_POST['op']);
 
-            $nu_linhas = sizeof($this->cm->retornoLike($_POST['op'], $_POST['caixaPesquisa'], null, 0));
+            $nu_linhas = sizeof($this->cm->retornoLike($_POST['op'], strtoupper($_POST['caixaPesquisa']), null, 0));
 
             $config = array(
                 "base_url" => base_url('pesquisa/p'),
@@ -59,8 +80,8 @@ class Catalogo_controller extends CI_Controller {
 
             $dados['paginacao'] = $this->pagination->create_links();
             $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-            $dados['tabelaLivros'] = $this->cm->retornoLike($_POST['op'], $_POST['caixaPesquisa'], $config['per_page'], $offset);
-            $dados['caixaPesquisa'] = $_POST['caixaPesquisa'];
+            $dados['tabelaLivros'] = $this->cm->retornoLike($_POST['op'], strtoupper($_POST['caixaPesquisa']), $config['per_page'], $offset);
+            $dados['caixaPesquisa'] = strtoupper($_POST['caixaPesquisa']);
             $dados['op'] = $_POST['op'];
 
             

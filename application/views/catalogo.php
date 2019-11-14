@@ -13,14 +13,14 @@ $this->load->view('include/header', $dados);
     }
 </style>
 <div class="disposicao">
-    <div class="fundo_acervo">
+    <div class="fundo_acervo" style="margin-bottom: 5%;">
         <fieldset>
             <legend>Pesquisar</legend>
             <form action="<?php echo base_url('pesquisa/p') ?>" method="post">
-                <label for="caixaPesquisa">Caixa de pesquisa</label>
-                <input type="text" name="caixaPesquisa" id="" value="<?php if (isset($caixaPesquisa)) {
-                                                                            echo $caixaPesquisa;
-                                                                        } ?>"><br>
+                <label for="caixaPesquisa">Caixa de pesquisa:</label>
+                <input class="form-control-referente" type="text" name="caixaPesquisa" id="" value="<?php if (isset($caixaPesquisa)) {
+                                                                                                        echo $caixaPesquisa;
+                                                                                                    } ?>"><br>
                 <label for="op">Pesquisar por:</label>
                 <input type="radio" name="op" id="" value="1" <?php if (isset($op)) {
                                                                     if ($op == 1) {
@@ -39,15 +39,15 @@ $this->load->view('include/header', $dados);
                                                                         echo 'checked';
                                                                     }
                                                                 }  ?>>ISBN
-                <br><input type="submit" value="Pesquisar" name="bt_pesquisa">
+                <br><input class="btn btn-primary" type="submit" value="Pesquisar" name="bt_pesquisa">
             </form>
         </fieldset>
-    
+
         <fieldset>
             <legend>Filtro</legend>
             <form action="<?php echo base_url('filtro/p') ?>" method="post">
                 <label for="selecao_autores">Autores:</label>
-                <select name="selecao_autores" id="">
+                <select class="form-control-referente" name="selecao_autores" id="">
                     <option value="">Vazio</option>
                     <?php
                     for ($i = 0; $i < count($lista_autores[0]); $i++) {
@@ -60,9 +60,9 @@ $this->load->view('include/header', $dados);
                     <?php
                     }
                     ?>
-                </select><br>
+                </select><br><br>
                 <label for="selecao_generos">Generos:</label>
-                <select name="selecao_generos" id="">
+                <select class="form-control-referente" name="selecao_generos" id="">
                     <option value="">Vazio</option>
                     <?php
                     for ($i = 0; $i < count($lista_generos[0]); $i++) {
@@ -75,14 +75,14 @@ $this->load->view('include/header', $dados);
                     <?php
                     }
                     ?>
-                </select><br>
+                </select><br><br>
                 <!-- <label for="selecao_ordem">Ordenar por:</label> -->
                 <!-- <select name="selecao_ordem" id="">
                     <option value="">Mais populares</option>
                     <option value="">Adquiridos recentemente</option>
                     <option value="">Alfabético</option>
                 </select><br> -->
-                <input type="submit" value="Filtrar" name="bt_filtro">
+                <input class="btn btn-primary" type="submit" value="Filtrar" name="bt_filtro">
             </form>
         </fieldset>
         <div class="table-responsive-sm">
@@ -97,16 +97,16 @@ $this->load->view('include/header', $dados);
                     <th>Disponibilidade no momento</th>
                     <!--contar o que tem dentro da array -->
                 </tr>
-    
+
                 <?php
                 $chaves = array('{', '}');
                 $vazio = true;
                 foreach ($tabelaLivros as $row => $value) {
                     $vazio = false;
-                    
+
                     ?>
                     <tr>
-                        <td><a href="<?php echo base_url('pagina_livro/').$value['id_livro'] ?>"><?php echo $value['nm_titulo'] ?></a></td>
+                        <td><a href="<?php echo base_url('pagina_livro/') . $value['id_livro'] ?>"><?php echo $value['nm_titulo'] ?></a></td>
                         <td><?php echo (str_replace($chaves, '', $value['autores'])); ?></td>
                         <td><?php echo (str_replace($chaves, '', $value['generos'])); ?></td>
                         <td><?php print_r($value['cod_isbn']); ?></td>
@@ -120,7 +120,7 @@ $this->load->view('include/header', $dados);
                                     }
                                 }
                                 echo $cont_disponiveis;
-    
+
                                 ?></td>
                     </tr>
                 <?php }
@@ -130,13 +130,13 @@ $this->load->view('include/header', $dados);
                     </tr>
                 <?php    }
                 ?>
-    
-    
-    
-    
+
+
+
+
             </table>
         </div>
-        <?php echo "<div style='display:flex; justify-content: center;'>".$paginacao."</div>"; ?>
+        <?php echo "<div style='display:flex; justify-content: center;'>" . $paginacao . "</div>"; ?>
 
     </div>
 </div>

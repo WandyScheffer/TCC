@@ -117,12 +117,15 @@ $this->load->view('include/header', $dados);
                         </div>
 
                         <!-- Button -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="bt_renovar"></label>
-                            <div class="col-md-4">
-                                <button id="bt_renovar" name="bt_renovar" value="1" class="btn btn-primary">Renovar</button>
+                        <?php if (isset($retorno['multa']) && $retorno['multa'] <= 0) { ?>
+                            
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="bt_renovar"></label>
+                                <div class="col-md-4">
+                                    <button id="bt_renovar" name="bt_renovar" value="1" class="btn btn-primary">Renovar</button>
+                                </div>
                             </div>
-                        </div>
+                        <?php } ?>
                     </div>
 
                 </fieldset>

@@ -116,7 +116,25 @@ class ManuseiaUsers_controller extends CI_Controller
             "per_page" => 3, //limit
             "num_links" => 3,
             "uri_segment" => 3, //offset
-            "total_rows" => $nu_linhas
+            "total_rows" => $nu_linhas,
+            "full_tag_open" => "<ul class = 'pagination justify-content-center'>",
+            "full_tag_close" => "</ul>",
+            "first_link" => false,
+            "last_link" => false,
+            "first_tag_open" => "<li>",
+            "first_tag_close" => "</li>",
+            "prev_link" => "Anterior",
+            "prev_tag_open" => "<li class = 'prev page-link'>",
+            "prev_tag_close" => "<li>",
+            "next_link" => "Próximo",
+            "next_tag_open" => "<li class = 'next page-link'>",
+            "next_tag_close" => "<li>",
+            "last_tag_open" => "<li>",
+            "last_tag_close" => "</li>",
+            "cur_tag_open" => "<li class = 'active page-item'><span class = 'page-link'>",
+            "cur_tag_close" => "<span class='sr-only'>(current)</span></span></li>",
+            "num_tag_open" => "<li class = 'page-link'>",
+            "num_tag_close" => "</li>"
         );
         $this->pagination->initialize($config);
         $dados['paginacao'] = $this->pagination->create_links();
@@ -135,22 +153,22 @@ class ManuseiaUsers_controller extends CI_Controller
         
         if (isset($_POST['bt_pesquisa']) && $_POST['nm_pessoa'] != '') {
             
-            setcookie('nm_pessoa', $_POST['nm_pessoa']);
+            setcookie('nm_pessoa', strtoupper ($_POST['nm_pessoa']));
             setcookie('tp_user', $_POST['tp_user']);
-            $dados['nm_pessoa'] = $_POST['nm_pessoa'];
+            $dados['nm_pessoa'] = strtoupper ($_POST['nm_pessoa']);
             $dados['tp_user'] = $_POST['tp_user'];
             
             if ($_POST['tp_user'] == 0 || $_POST['tp_user'] == 1 || $_POST['tp_user'] == 2 || $_POST['tp_user'] == 3) {
                         
                 $procurar_por = array(
-                    'nm_pessoa' => $_POST['nm_pessoa'], 
+                    'nm_pessoa' => strtoupper ($_POST['nm_pessoa']), 
                     'tp_user' => $_POST['tp_user']
                     );
                 
             }else {
 
                 $procurar_por = array(
-                    'nm_pessoa' => $_POST['nm_pessoa']
+                    'nm_pessoa' => strtoupper ($_POST['nm_pessoa'])
                 );
 
             }
@@ -162,7 +180,25 @@ class ManuseiaUsers_controller extends CI_Controller
                 "per_page" => 3, //limit
                 "num_links" => 3,
                 "uri_segment" => 3, //offset
-                "total_rows" => $nu_linhas
+                "total_rows" => $nu_linhas,
+                "full_tag_open" => "<ul class = 'pagination justify-content-center'>",
+                "full_tag_close" => "</ul>",
+                "first_link" => false,
+                "last_link" => false,
+                "first_tag_open" => "<li>",
+                "first_tag_close" => "</li>",
+                "prev_link" => "Anterior",
+                "prev_tag_open" => "<li class = 'prev page-link'>",
+                "prev_tag_close" => "<li>",
+                "next_link" => "Próximo",
+                "next_tag_open" => "<li class = 'next page-link'>",
+                "next_tag_close" => "<li>",
+                "last_tag_open" => "<li>",
+                "last_tag_close" => "</li>",
+                "cur_tag_open" => "<li class = 'active page-item'><span class = 'page-link'>",
+                "cur_tag_close" => "<span class='sr-only'>(current)</span></span></li>",
+                "num_tag_open" => "<li class = 'page-link'>",
+                "num_tag_close" => "</li>"
             );
 
             $this->pagination->initialize($config);
@@ -198,7 +234,25 @@ class ManuseiaUsers_controller extends CI_Controller
                 "per_page" => 3, //limit
                 "num_links" => 3,
                 "uri_segment" => 3, //offset
-                "total_rows" => $nu_linhas
+                "total_rows" => $nu_linhas,
+                "full_tag_open" => "<ul class = 'pagination justify-content-center'>",
+                "full_tag_close" => "</ul>",
+                "first_link" => false,
+                "last_link" => false,
+                "first_tag_open" => "<li>",
+                "first_tag_close" => "</li>",
+                "prev_link" => "Anterior",
+                "prev_tag_open" => "<li class = 'prev page-link'>",
+                "prev_tag_close" => "<li>",
+                "next_link" => "Próximo",
+                "next_tag_open" => "<li class = 'next page-link'>",
+                "next_tag_close" => "<li>",
+                "last_tag_open" => "<li>",
+                "last_tag_close" => "</li>",
+                "cur_tag_open" => "<li class = 'active page-item'><span class = 'page-link'>",
+                "cur_tag_close" => "<span class='sr-only'>(current)</span></span></li>",
+                "num_tag_open" => "<li class = 'page-link'>",
+                "num_tag_close" => "</li>"
             );
 
             $this->pagination->initialize($config);

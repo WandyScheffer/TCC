@@ -50,10 +50,10 @@ $this->load->view('include/header', $dados);
                         <td><?php print_r($linha['dt_devolucao_prevista']) ?></td>
                         <td><?php print_r($linha['dt_devolucao']) ?></td>
                         <td><?php print_r($linha['vl_pago']) ?></td>
-                        <td><?php if ($linha['multa'] < 0) {
-                                    print_r('0');
-                                } else {
+                        <td><?php if ($linha['multa'] > 0 && $linha['dt_devolucao'] == '') {
                                     print_r($linha['multa']);
+                                } else{
+                                    print_r('0');
                                 } ?></td>
                         <td><?php if ($linha['multa'] == 0 && $linha['dt_devolucao'] == '') { ?>
 

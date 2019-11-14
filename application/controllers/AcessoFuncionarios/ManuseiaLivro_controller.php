@@ -49,7 +49,7 @@ class ManuseiaLivro_controller extends CI_Controller
         
 
         $array_livro = array(
-            'nm_titulo' => $_POST['nm_titulo'],
+            'nm_titulo' => strtoupper($_POST['nm_titulo']),
             'cod_isbn' => $_POST['isbn']
         );
 
@@ -92,16 +92,15 @@ class ManuseiaLivro_controller extends CI_Controller
 
         // print_r($qt_add_exemplar);
 
-        // redirect(base_url(''));
+        redirect(base_url('catalogo'));
         
     }
-
 
     public function cadastrandoLivro()
     {
 
         $array_livro = array(
-            'nm_titulo' => $_POST['nm_titulo'], 
+            'nm_titulo' => strtoupper ($_POST['nm_titulo']), 
             'cod_isbn' => $_POST['isbn']
         );
 
@@ -159,12 +158,12 @@ class ManuseiaLivro_controller extends CI_Controller
         
         if ($tipo==1) {
             
-            $nm_autor = array('nm_autor' => $_POST['dado_referente']);
+            $nm_autor = array('nm_autor' => strtoupper ($_POST['dado_referente']));
             $this->ielm->addAutor($nm_autor);
             redirect(base_url('cad_referente_livro/1'));
         } else {
             
-            $tipo_genero = array('tipo' => $_POST['dado_referente']);
+            $tipo_genero = array('tipo' => strtoupper ($_POST['dado_referente']));
             $this->ielm->addGenero($tipo_genero);
             redirect(base_url('cad_referente_livro/2'));
         }
