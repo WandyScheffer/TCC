@@ -1,7 +1,7 @@
     </section>
     
     <footer class="rodape">
-        Um rodapé
+        
     </footer>
 
 

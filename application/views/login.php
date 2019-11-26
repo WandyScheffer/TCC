@@ -8,9 +8,14 @@ $this->load->view('include/header', $dados);
 <div class="disposicao">
     <div class="fundo_login">
         <?php
-        if (isset($msg)) {
-            echo $msg;
-        }
+        if (isset($msg)) { ?>
+            <script>
+                //funcionou assim
+                
+                    alert(<?php echo $msg ?>);
+                
+            </script>
+        <?php }
         ?>
 
         <form action="<?php echo base_url('logar'); ?>" method="post">

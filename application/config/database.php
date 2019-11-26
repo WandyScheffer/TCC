@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '200.19.1.18',//192.168.20.18 ou 200.19.1.18
+	'hostname' => '192.168.20.18',//192.168.20.18 ou 200.19.1.18 pois o host muda se estiver na rede da instituição (IF)
 	'username' => 'aluno4m21',
 	'password' => '123',
 	'database' => 'BD4AnoManha',
