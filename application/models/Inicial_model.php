@@ -10,7 +10,7 @@ class Inicial_model extends CI_Model{
     }
 
     public function retornoEvent(){
-        $sql = 'select titulo, conteudo from "ALUNO4M21".mltb_infosite where tipo = 2 order by id_is desc limit 8;';
+        $sql = 'select titulo, conteudo from "aluno4m21".mltb_infosite where tipo = 2 order by id_is desc limit 8;';
         $query = $this->db->query($sql);
         $lista_titulo = [];
         $lista_conteudo = [];

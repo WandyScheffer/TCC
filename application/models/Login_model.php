@@ -8,11 +8,11 @@ class Login_model extends CI_Model{
     }
 
     public function verificaUser($permi, $id, $pass){
-        $sqlid = 'select 1 as verificacao from "ALUNO4M21".mltb_pessoa where permissao = ? and id_pessoa = ?';
+        $sqlid = 'select 1 as verificacao from "aluno4m21".mltb_pessoa where permissao = ? and id_pessoa = ?';
         
         $verifica_user = $this->db->query($sqlid, array($permi, $id));
 
-        $sqlpass = 'select 1 as verificacao from "ALUNO4M21".mltb_pessoa where permissao = ? and senha = ?';
+        $sqlpass = 'select 1 as verificacao from "aluno4m21".mltb_pessoa where permissao = ? and senha = ?';
 
         $verifica_pass= $this->db->query($sqlpass, array($permi, $pass));
 
@@ -24,7 +24,7 @@ class Login_model extends CI_Model{
     }
 
     public function dadosUser($id){
-        $sql = 'select id_pessoa, nm_pessoa, permissao from "ALUNO4M21".mltb_pessoa where id_pessoa = ?';
+        $sql = 'select id_pessoa, nm_pessoa, permissao from "aluno4m21".mltb_pessoa where id_pessoa = ?';
         $dados_user = $this->db->query($sql, array($id));
 
         return $dados_user;

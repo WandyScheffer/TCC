@@ -15,7 +15,7 @@ class Informacoes_model extends CI_Model
                         titulo,
                         conteudo,
                         id_biblio,
-                        tipo from "ALUNO4M21".mltb_infosite where tipo = 2 and dt_prevista > now() order by dt_prevista limit ? offset ?;';
+                        tipo from "aluno4m21".mltb_infosite where tipo = 2 and dt_prevista > now() order by dt_prevista limit ? offset ?;';
         $query = $this->db->query($sql, array($limit,$offset));
 
         return $query->result();
@@ -24,7 +24,7 @@ class Informacoes_model extends CI_Model
     }
 
     public function nuLinhas(){
-        $sql = 'select count(*) as nulinhas from "ALUNO4M21".mltb_infosite where tipo=2 and dt_prevista > now();';
+        $sql = 'select count(*) as nulinhas from "aluno4m21".mltb_infosite where tipo=2 and dt_prevista > now();';
         $query = $this->db->query($sql);
 
         return $query->row()->nulinhas;

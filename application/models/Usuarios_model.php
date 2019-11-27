@@ -7,7 +7,7 @@ class Usuarios_model extends CI_Model {
     public function insereUser($array_insercao)
     {
 
-        return $this->db->insert('"ALUNO4M21".mltb_pessoa', $array_insercao);
+        return $this->db->insert('"aluno4m21".mltb_pessoa', $array_insercao);
         
     }
     
@@ -18,7 +18,7 @@ class Usuarios_model extends CI_Model {
             
             $this->db->order_by('id_pessoa', 'asc');
             
-            return $this->db->get('"ALUNO4M21".mltb_pessoa', $limit, $offset)->result_array();
+            return $this->db->get('"aluno4m21".mltb_pessoa', $limit, $offset)->result_array();
             
         }else {
             if (isset($array['tp_user'])) {
@@ -31,14 +31,14 @@ class Usuarios_model extends CI_Model {
 
             $this->db->order_by('id_pessoa', 'asc');
 
-            return $this->db->get('"ALUNO4M21".mltb_pessoa', $limit, $offset)->result_array();
+            return $this->db->get('"aluno4m21".mltb_pessoa', $limit, $offset)->result_array();
         }
     }
     public function retornaUserUni($id = null)
     {
         $this->db->where('id_pessoa', $id);
 
-        return $this->db->get('"ALUNO4M21".mltb_pessoa', 1, 0)->result_array();
+        return $this->db->get('"aluno4m21".mltb_pessoa', 1, 0)->result_array();
         
         
     }
@@ -46,7 +46,7 @@ class Usuarios_model extends CI_Model {
     {
         $this->db->where('id_pessoa', $id_where);
         
-        $this->db->update('"ALUNO4M21".mltb_pessoa', $array_update);
+        $this->db->update('"aluno4m21".mltb_pessoa', $array_update);
         
     }
 

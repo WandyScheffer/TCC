@@ -11,19 +11,19 @@ class Catalogo_model extends CI_Model{
          $sql = 'select li.id_livro,
                 li.nm_titulo, 
                 array(
-                	select a.nm_autor from "ALUNO4M21".mltb_autor a, "ALUNO4M21".mltb_livro_autor la 
+                	select a.nm_autor from "aluno4m21".mltb_autor a, "aluno4m21".mltb_livro_autor la 
                 	where la.id_livro = li.id_livro and la.id_autor = a.id_autor
                 ) as autores,
                 array(
-                	select g.tipo from "ALUNO4M21".mltb_genero g, "ALUNO4M21".mltb_livro_genero lg 
+                	select g.tipo from "aluno4m21".mltb_genero g, "aluno4m21".mltb_livro_genero lg 
                 	where lg.id_livro = li.id_livro and g.id_genero = lg.id_genero
                 ) as generos,
                 array(
-                	select e.id_exemplar from "ALUNO4M21".mltb_exemplar_livro e 
+                	select e.id_exemplar from "aluno4m21".mltb_exemplar_livro e 
                 	where e.id_livro = li.id_livro and e.est_locado = false
                 )  as exemplares,
                 li.cod_isbn
-                from "ALUNO4M21".mltb_livro li
+                from "aluno4m21".mltb_livro li
                 order by nm_titulo limit ? offset ?;';
         
         $query = $this->db->query($sql, array($limit, $offset));
@@ -32,7 +32,7 @@ class Catalogo_model extends CI_Model{
     }
     public function nuLinhas($tipo_selecao = null, $demais = null){
         if ($tipo_selecao==1) {//linhas da ordem alfabética
-            $sql = 'select count(nm_titulo) as nulinhas from "ALUNO4M21".mltb_livro;';
+            $sql = 'select count(nm_titulo) as nulinhas from "aluno4m21".mltb_livro;';
             $query = $this->db->query($sql);
             return $query->row()->nulinhas;
         } else if ($tipo_selecao==2){
@@ -42,7 +42,7 @@ class Catalogo_model extends CI_Model{
 
     //retorna autores para caixa de seleção
     public function retornoAutores(){
-        $sql = 'select * from "ALUNO4M21".mltb_autor;';
+        $sql = 'select * from "aluno4m21".mltb_autor;';
         $query=$this->db->query($sql);
         $lista_id = [];
         $lista_autores = [];
@@ -59,7 +59,7 @@ class Catalogo_model extends CI_Model{
     }
 
     public function retornoGeneros(){
-        $sql = 'select * from "ALUNO4M21".mltb_genero;';
+        $sql = 'select * from "aluno4m21".mltb_genero;';
         $query = $this->db->query($sql);
         $lista_id = [];
         $lista_generos = [];
@@ -82,19 +82,19 @@ class Catalogo_model extends CI_Model{
             $sql = "select li.id_livro,
                 li.nm_titulo, 
                 array(
-                	select a.nm_autor from " . '"ALUNO4M21"' . ".mltb_autor a, " . '"ALUNO4M21"' . ".mltb_livro_autor la 
+                	select a.nm_autor from " . '"aluno4m21"' . ".mltb_autor a, " . '"aluno4m21"' . ".mltb_livro_autor la 
                 	where la.id_livro = li.id_livro and la.id_autor = a.id_autor
                 ) as autores,
                 array(
-                	select g.tipo from " . '"ALUNO4M21"' . ".mltb_genero g, " . '"ALUNO4M21"' . ".mltb_livro_genero lg 
+                	select g.tipo from " . '"aluno4m21"' . ".mltb_genero g, " . '"aluno4m21"' . ".mltb_livro_genero lg 
                 	where lg.id_livro = li.id_livro and g.id_genero = lg.id_genero
                 ) as generos,
                 array(
-                	select e.id_exemplar from " . '"ALUNO4M21"' . ".mltb_exemplar_livro e 
+                	select e.id_exemplar from " . '"aluno4m21"' . ".mltb_exemplar_livro e 
                 	where e.id_livro = li.id_livro and e.est_locado = false
                 )  as exemplares,
                 li.cod_isbn
-                from " . '"ALUNO4M21"' . ".mltb_livro li
+                from " . '"aluno4m21"' . ".mltb_livro li
                 where nm_titulo like" . $string .
                 "order by nm_titulo limit ? offset ?;";
 
@@ -107,19 +107,19 @@ class Catalogo_model extends CI_Model{
             $sql = "select li.id_livro,
                 li.nm_titulo, 
                 array(
-                	select a.nm_autor from " . '"ALUNO4M21"' . ".mltb_autor a, " . '"ALUNO4M21"' . ".mltb_livro_autor la 
+                	select a.nm_autor from " . '"aluno4m21"' . ".mltb_autor a, " . '"aluno4m21"' . ".mltb_livro_autor la 
                 	where la.id_livro = li.id_livro and la.id_autor = a.id_autor
                 ) as autores,
                 array(
-                	select g.tipo from " . '"ALUNO4M21"' . ".mltb_genero g, " . '"ALUNO4M21"' . ".mltb_livro_genero lg 
+                	select g.tipo from " . '"aluno4m21"' . ".mltb_genero g, " . '"aluno4m21"' . ".mltb_livro_genero lg 
                 	where lg.id_livro = li.id_livro and g.id_genero = lg.id_genero
                 ) as generos,
                 array(
-                	select e.id_exemplar from " . '"ALUNO4M21"' . ".mltb_exemplar_livro e 
+                	select e.id_exemplar from " . '"aluno4m21"' . ".mltb_exemplar_livro e 
                 	where e.id_livro = li.id_livro and e.est_locado = false
                 )  as exemplares,
                 li.cod_isbn
-                from " . '"ALUNO4M21"' . ".mltb_livro li, " . '"ALUNO4M21"' . ".mltb_autor a, " . '"ALUNO4M21"' . ".mltb_livro_autor la
+                from " . '"aluno4m21"' . ".mltb_livro li, " . '"aluno4m21"' . ".mltb_autor a, " . '"aluno4m21"' . ".mltb_livro_autor la
                 where a.nm_autor like" . $string .
                 "and la . id_autor = a . id_autor and la . id_livro = li . id_livro
                 order by nm_titulo limit ? offset ?;";
@@ -133,19 +133,19 @@ class Catalogo_model extends CI_Model{
             $sql = "select li.id_livro,
                 li.nm_titulo, 
                 array(
-                	select a.nm_autor from " . '"ALUNO4M21"' . ".mltb_autor a, " . '"ALUNO4M21"' . ".mltb_livro_autor la 
+                	select a.nm_autor from " . '"aluno4m21"' . ".mltb_autor a, " . '"aluno4m21"' . ".mltb_livro_autor la 
                 	where la.id_livro = li.id_livro and la.id_autor = a.id_autor
                 ) as autores,
                 array(
-                	select g.tipo from " . '"ALUNO4M21"' . ".mltb_genero g, " . '"ALUNO4M21"' . ".mltb_livro_genero lg 
+                	select g.tipo from " . '"aluno4m21"' . ".mltb_genero g, " . '"aluno4m21"' . ".mltb_livro_genero lg 
                 	where lg.id_livro = li.id_livro and g.id_genero = lg.id_genero
                 ) as generos,
                 array(
-                	select e.id_exemplar from " . '"ALUNO4M21"' . ".mltb_exemplar_livro e 
+                	select e.id_exemplar from " . '"aluno4m21"' . ".mltb_exemplar_livro e 
                 	where e.id_livro = li.id_livro and e.est_locado = false
                 )  as exemplares,
                 li.cod_isbn
-                from " . '"ALUNO4M21"' . ".mltb_livro li
+                from " . '"aluno4m21"' . ".mltb_livro li
                 where li.cod_isbn =" . $string .
                 "order by nm_titulo limit ? offset ?;";               
 
@@ -160,23 +160,23 @@ class Catalogo_model extends CI_Model{
             $sql = 'select li.id_livro,
                 li.nm_titulo, 
                 array(
-                	select a.nm_autor from "ALUNO4M21".mltb_autor a, "ALUNO4M21".mltb_livro_autor la 
+                	select a.nm_autor from "aluno4m21".mltb_autor a, "aluno4m21".mltb_livro_autor la 
                 	where la.id_livro = li.id_livro and la.id_autor = a.id_autor
                 ) as autores,
                 array(
-                	select g.tipo from "ALUNO4M21".mltb_genero g, "ALUNO4M21".mltb_livro_genero lg 
+                	select g.tipo from "aluno4m21".mltb_genero g, "aluno4m21".mltb_livro_genero lg 
                 	where lg.id_livro = li.id_livro and g.id_genero = lg.id_genero
                 ) as generos,
                 array(
-                	select e.id_exemplar from "ALUNO4M21".mltb_exemplar_livro e 
+                	select e.id_exemplar from "aluno4m21".mltb_exemplar_livro e 
                 	where e.id_livro = li.id_livro
                 )  as exemplares,
                 li.cod_isbn
-                from "ALUNO4M21".mltb_livro li, 
-                "ALUNO4M21".mltb_autor a, 
-                "ALUNO4M21".mltb_livro_autor la, 
-                "ALUNO4M21".mltb_genero g,
-                "ALUNO4M21".mltb_livro_genero lg 
+                from "aluno4m21".mltb_livro li, 
+                "aluno4m21".mltb_autor a, 
+                "aluno4m21".mltb_livro_autor la, 
+                "aluno4m21".mltb_genero g,
+                "aluno4m21".mltb_livro_genero lg 
 
                 where li.id_livro = la.id_livro and
                 la.id_autor = ? and
@@ -192,21 +192,21 @@ class Catalogo_model extends CI_Model{
             $sql = 'select li.id_livro,
                 li.nm_titulo, 
                 array(
-                    select a.nm_autor from "ALUNO4M21".mltb_autor a, "ALUNO4M21".mltb_livro_autor la 
+                    select a.nm_autor from "aluno4m21".mltb_autor a, "aluno4m21".mltb_livro_autor la 
                     where la.id_livro = li.id_livro and la.id_autor = a.id_autor
                 ) as autores,
                 array(
-                    select g.tipo from "ALUNO4M21".mltb_genero g, "ALUNO4M21".mltb_livro_genero lg 
+                    select g.tipo from "aluno4m21".mltb_genero g, "aluno4m21".mltb_livro_genero lg 
                     where lg.id_livro = li.id_livro and g.id_genero = lg.id_genero
                 ) as generos,
                 array(
-                    select e.id_exemplar from "ALUNO4M21".mltb_exemplar_livro e 
+                    select e.id_exemplar from "aluno4m21".mltb_exemplar_livro e 
                     where e.id_livro = li.id_livro
                 )  as exemplares,
                 li.cod_isbn
-                from "ALUNO4M21".mltb_livro li, 
-                "ALUNO4M21".mltb_autor a,
-                "ALUNO4M21".mltb_livro_autor la
+                from "aluno4m21".mltb_livro li, 
+                "aluno4m21".mltb_autor a,
+                "aluno4m21".mltb_livro_autor la
 
                 where li.id_livro = la.id_livro and
                 la.id_autor = ? and
@@ -219,21 +219,21 @@ class Catalogo_model extends CI_Model{
             $sql = 'select li.id_livro,
                 li.nm_titulo, 
                 array(
-                    select a.nm_autor from "ALUNO4M21".mltb_autor a, "ALUNO4M21".mltb_livro_autor la 
+                    select a.nm_autor from "aluno4m21".mltb_autor a, "aluno4m21".mltb_livro_autor la 
                     where la.id_livro = li.id_livro and la.id_autor = a.id_autor
                 ) as autores,
                 array(
-                    select g.tipo from "ALUNO4M21".mltb_genero g, "ALUNO4M21".mltb_livro_genero lg 
+                    select g.tipo from "aluno4m21".mltb_genero g, "aluno4m21".mltb_livro_genero lg 
                     where lg.id_livro = li.id_livro and g.id_genero = lg.id_genero
                 ) as generos,
                 array(
-                    select e.id_exemplar from "ALUNO4M21".mltb_exemplar_livro e 
+                    select e.id_exemplar from "aluno4m21".mltb_exemplar_livro e 
                     where e.id_livro = li.id_livro
                 )  as exemplares,
                 li.cod_isbn
-                from "ALUNO4M21".mltb_livro li, 
-                "ALUNO4M21".mltb_genero g,
-                "ALUNO4M21".mltb_livro_genero lg
+                from "aluno4m21".mltb_livro li, 
+                "aluno4m21".mltb_genero g,
+                "aluno4m21".mltb_livro_genero lg
 
                 where li.id_livro = lg.id_livro and
                 lg.id_genero = ? and

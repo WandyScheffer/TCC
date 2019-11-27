@@ -14,10 +14,10 @@ class Locacoes_model extends CI_Model {
     public function realizaLocacao($array_insercao = null)
     {
         // $array_insercao['dt_devolucao_prevista'] = " date 'now()' + integer '7' ";
-        // $this->db->insert('"ALUNO4M21".mltb_locacao', $array_insercao);
+        // $this->db->insert('"aluno4m21".mltb_locacao', $array_insercao);
 
         $sql = 'insert into 
-                "ALUNO4M21".mltb_locacao 
+                "aluno4m21".mltb_locacao 
                 (dt_devolucao_prevista, id_locador, id_bibliotecario, id_exemplar) 
                 values ('. "date 'now()' + integer '7'" .', ? , ? , ? );';
         $query = $this->db->query($sql, array($array_insercao['id_locador'], $array_insercao['id_bibliotecario'], $array_insercao['id_exemplar']));
@@ -25,7 +25,7 @@ class Locacoes_model extends CI_Model {
         $locar['est_locado'] = true;
 
         $this->db->where('id_exemplar', $array_insercao['id_exemplar']);
-        $this->db->update('"ALUNO4M21".mltb_exemplar_livro ', $locar);
+        $this->db->update('"aluno4m21".mltb_exemplar_livro ', $locar);
         
     }
 
@@ -35,7 +35,7 @@ class Locacoes_model extends CI_Model {
         $this->db->where('id_exemplar =', $id_exemplar);
         $this->db->where('est_locado = ', 'true');
         
-        return $this->db->get('"ALUNO4M21".mltb_exemplar_livro', null, null)->result_array();
+        return $this->db->get('"aluno4m21".mltb_exemplar_livro', null, null)->result_array();
         
     }
 
@@ -44,7 +44,7 @@ class Locacoes_model extends CI_Model {
         $this->db->where('id_pessoa = ', $id_user);
         $this->db->where('permissao', 3);
         
-        return $this->db->get('"ALUNO4M21".mltb_pessoa', null, null)->result_array();
+        return $this->db->get('"aluno4m21".mltb_pessoa', null, null)->result_array();
         
     }
 
@@ -52,10 +52,10 @@ class Locacoes_model extends CI_Model {
     {
         $id['id_user'] = $id_user;
         $sql = 'select li.nm_titulo, 
-                cast (to_char((now() - lo.dt_devolucao_prevista),'."'dd'".') as integer)*(select vl_multa from "ALUNO4M21".mltb_valormulta order by id_valor desc limit 1) as multa
-                from "ALUNO4M21".mltb_locacao as lo,
-                "ALUNO4M21".mltb_exemplar_livro as e,
-                "ALUNO4M21".mltb_livro as li 
+                cast (to_char((now() - lo.dt_devolucao_prevista),'."'dd'". ') as integer)*(select vl_multa from "aluno4m21".mltb_valormulta order by id_valor desc limit 1) as multa
+                from "aluno4m21".mltb_locacao as lo,
+                "aluno4m21".mltb_exemplar_livro as e,
+                "aluno4m21".mltb_livro as li 
                 where lo.id_locador = ? and
                 lo.id_exemplar = e.id_exemplar and
                 e.id_livro = li.id_livro and
@@ -72,7 +72,7 @@ class Locacoes_model extends CI_Model {
         $this->db->where('dt_devolucao', null);
         
         
-        $this->db->update('"ALUNO4M21".mltb_locacao', $array_update);
+        $this->db->update('"aluno4m21".mltb_locacao', $array_update);
         
     }
 
@@ -82,7 +82,7 @@ class Locacoes_model extends CI_Model {
         $this->db->where('id_locador', $id_user);
         $this->db->where('dt_devolucao', null);
         
-        return $this->db->get('"ALUNO4M21".mltb_locacao', null, null)->result_array();
+        return $this->db->get('"aluno4m21".mltb_locacao', null, null)->result_array();
         
         
     }
@@ -91,19 +91,19 @@ class Locacoes_model extends CI_Model {
     {
         $this->db->where('id_exemplar', $id_exemplar);
         $array_update['est_locado'] = false;
-        $this->db->update('"ALUNO4M21".mltb_exemplar_livro ', $array_update);
+        $this->db->update('"aluno4m21".mltb_exemplar_livro ', $array_update);
         
     }
 
     public function renovamento($id_user = null)
     {
-        $sql = 'update "ALUNO4M21".mltb_locacao set dt_devolucao_prevista = (date '."'now()'".' + integer '."'7'".') where id_locador = ? and dt_devolucao is null';
+        $sql = 'update "aluno4m21".mltb_locacao set dt_devolucao_prevista = (date '."'now()'".' + integer '."'7'".') where id_locador = ? and dt_devolucao is null';
         $query = $this->db->query($sql, array($id_user));
     }
 
     public function renovamentoIdLocacao($id_locacao = null)
     {
-        $sql = 'update "ALUNO4M21".mltb_locacao set dt_devolucao_prevista = (date ' . "'now()'" . ' + integer ' . "'7'" . ') where id_locacao = ? and dt_devolucao is null';
+        $sql = 'update "aluno4m21".mltb_locacao set dt_devolucao_prevista = (date ' . "'now()'" . ' + integer ' . "'7'" . ') where id_locacao = ? and dt_devolucao is null';
         $query = $this->db->query($sql, array($id_locacao));
         
     }
@@ -112,18 +112,18 @@ class Locacoes_model extends CI_Model {
     {
         $sql = 'select pe.id_pessoa, pe.nm_pessoa as locador, 
                 li.nm_titulo as titulo, lo.id_exemplar, lo.vl_pago,
-                cast (to_char((now() - lo.dt_devolucao_prevista),'."'dd'".') as integer)*(select vl_multa 
-                																	from "ALUNO4M21".mltb_valormulta 
+                cast (to_char((now() - lo.dt_devolucao_prevista),'."'dd'". ') as integer)*(select vl_multa 
+                																	from "aluno4m21".mltb_valormulta 
                 																	order by id_valor desc limit 1) as multa,
                 to_char (lo.dt_locacao, '."'dd/mm/yyyy'".') as dt_locacao,
                 to_char (lo.dt_devolucao_prevista, '."'dd/mm/yyyy'".') as dt_devolucao_prevista,
                 to_char (lo.dt_devolucao, '."'dd/mm/yyyy'". ') as dt_devolucao,
                 pb.nm_pessoa as biblio_locar
-                from "ALUNO4M21".mltb_locacao as lo,
-                "ALUNO4M21".mltb_pessoa as pe,
-                "ALUNO4M21".mltb_livro as li,
-                "ALUNO4M21".mltb_exemplar_livro as e,
-                "ALUNO4M21".mltb_pessoa as pb
+                from "aluno4m21".mltb_locacao as lo,
+                "aluno4m21".mltb_pessoa as pe,
+                "aluno4m21".mltb_livro as li,
+                "aluno4m21".mltb_exemplar_livro as e,
+                "aluno4m21".mltb_pessoa as pb
                 where lo.id_locador = pe.id_pessoa and
                 lo.id_exemplar = e.id_exemplar and
                 e.id_livro = li.id_livro and
@@ -138,15 +138,15 @@ class Locacoes_model extends CI_Model {
     public function locacoesUsuario($id_user = null, $limit = null, $offset = null)
     {
         $sql = 'select lo.id_locacao, li.nm_titulo as titulo, lo.id_exemplar, lo.vl_pago,
-                cast (to_char((now() - lo.dt_devolucao_prevista),'."'dd'".') as integer)*(select vl_multa 
-                																	from "ALUNO4M21".mltb_valormulta 
+                cast (to_char((now() - lo.dt_devolucao_prevista),'."'dd'". ') as integer)*(select vl_multa 
+                																	from "aluno4m21".mltb_valormulta 
                 																	order by id_valor desc limit 1) as multa,
                 to_char (lo.dt_locacao, '."'dd/mm/yyyy'".') as dt_locacao,
                 to_char (lo.dt_devolucao_prevista, '."'dd/mm/yyyy'".') as dt_devolucao_prevista,
                 to_char (lo.dt_devolucao, '."'dd/mm/yyyy'". ') as dt_devolucao
-                from "ALUNO4M21".mltb_locacao as lo,
-                "ALUNO4M21".mltb_livro as li,
-                "ALUNO4M21".mltb_exemplar_livro as e
+                from "aluno4m21".mltb_locacao as lo,
+                "aluno4m21".mltb_livro as li,
+                "aluno4m21".mltb_exemplar_livro as e
                 where lo.id_exemplar = e.id_exemplar and
                 e.id_livro = li.id_livro and
                 lo.id_locador = ?

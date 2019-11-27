@@ -10,7 +10,7 @@ class Sobre_model extends CI_Model{
     }
 
     public function retornoSobre(){
-        $sql = 'select titulo, conteudo from "ALUNO4M21".mltb_infosite where tipo = 1 order by id_is desc limit 1;';
+        $sql = 'select titulo, conteudo from "aluno4m21".mltb_infosite where tipo = 1 order by id_is desc limit 1;';
         $query = $this->db->query($sql);
         //$lista_titulo = [];
         //$lista_conteudo = [];
